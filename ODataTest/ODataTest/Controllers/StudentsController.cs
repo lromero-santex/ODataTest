@@ -28,7 +28,7 @@ namespace ODataTest.Controllers
         public IActionResult Get(ODataQueryOptions<Student> opts)
         {
             return Ok(
-                opts.RawValues.Select == null ? _studentService.GetAll(opts) : _studentService.GetAllDynamic(opts));
+                opts.SelectExpand == null ? _studentService.GetAll(opts) : _studentService.GetAllDynamic(opts));
         }
     }
 }
