@@ -30,5 +30,11 @@ namespace ODataTest.Controllers
             return Ok(
                 opts.SelectExpand == null ? _studentService.GetAll(opts) : _studentService.GetAllDynamic(opts));
         }
+        
+        [HttpGet]
+        public IActionResult Get(long key,ODataQueryOptions<Student> opts)
+        {
+            return Ok( opts.SelectExpand == null ? _studentService.GetById(key) : _studentService.GetByIdDynamic(key,opts));
+        }
     }
 }

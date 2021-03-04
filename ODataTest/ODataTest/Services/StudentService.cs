@@ -29,5 +29,15 @@ namespace ODataTest.Services
         {
             return _studentRepository.GetAllDynamic(opts);
         }
+
+        public StudentDto GetById(long key)
+        {
+            return _mapper.Map<StudentDto>(_studentRepository.GetById(key));
+        }
+        
+        public dynamic GetByIdDynamic(long key,ODataQueryOptions<Student> opts)
+        {
+            return _studentRepository.GetByIdDynamic(key,opts);
+        }
     }
 }

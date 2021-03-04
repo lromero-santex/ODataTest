@@ -27,10 +27,21 @@ namespace ODataTest.Repositories
         }
         
         
+        public Student GetById(long key)
+        {
+            return _context.Students.Find(key);
+        }
+        
+        public dynamic GetByIdDynamic(long key, ODataQueryOptions<Student> oDataQueryOptions)
+        {
+            return oDataQueryOptions.ApplyTo(_context.Students.Where(x=>x.Id==key));
+        }
+        
         public IEnumerable GetAllDynamic(ODataQueryOptions<Student> oDataQueryOptions)
         {
             return oDataQueryOptions.ApplyTo(_context.Students);
         }
+        
         private static IEnumerable<Student> GetStudents()
         {
             return new List<Student>
